@@ -1,0 +1,11 @@
+{
+  "extends": [ "ts-standard-next" ],
+  "overrides": [
+    {
+      "files": [ "*.cjs" ],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
+}
