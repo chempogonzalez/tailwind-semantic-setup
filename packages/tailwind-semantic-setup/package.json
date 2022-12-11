@@ -2,7 +2,7 @@
   "name": "tailwind-semantic-setup",
   "type": "module",
   "source": "index.js",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "🧬 Tailwind preset to enable a good semantic setup for better Design Systems",
   "author": "Chempo González <chempo.glez@gmail.com> (https://github.com/chempogonzalez/)",
   "license": "ISC",
