@@ -17,6 +17,7 @@ Tailwind preset to enable a good semantic setup for better Design Systems
       - [🟠 **`name`** _(required)_](#-name-required)
       - [🟠 **`preferredColorScheme`** _(optional)_](#-preferredcolorscheme-optional)
       - [🟠 **`colors`** _(required)_](#-colors-required)
+    - [This README.md file has been written keeping in mind](#this-readmemd-file-has-been-written-keeping-in-mind)
 
 
 ## 🚀 **Features**
@@ -180,3 +181,20 @@ The colors object is where define your theme colors palette.
 <br>
 
 ![color-palette](../../assets/palette.png)
+
+<br>
+
+This approach allows you to have a consistent color palette for your brand with different themes in a very simple way.
+<br>
+
+The colors approach is mainly based on [daisyui colors palette](https://daisyui.com/docs/colors) but adding some other nice features to make it more customizable/extendable for your brand.
+
+<br>
+<br>
+
+> Created with JavaScript! ⚡ and latin music 🎺🎵
+
+### This README.md file has been written keeping in mind
+
+- [GitHub Markdown](https://guides.github.com/features/mastering-markdown/)
+- [Emoji Cheat Sheet](https://www.webfx.com/tools/emoji-cheat-sheet/)
