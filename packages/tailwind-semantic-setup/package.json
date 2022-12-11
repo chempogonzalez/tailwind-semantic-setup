@@ -2,7 +2,7 @@
   "name": "tailwind-semantic-setup",
   "type": "module",
   "source": "index.js",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "",
   "author": "Chempo González <chempo.glez@gmail.com> (https://github.com/chempogonzalez/)",
   "license": "ISC",
@@ -21,6 +21,10 @@
   "module": "./dist/tailwind-semantic-setup.module.js",
   "unpkg": "./dist/tailwind-semantic-setup.umd.js",
   "types": "./types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
   "scripts": {
     "build": "microbundle",
     "dev": "microbundle watch"
