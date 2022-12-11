@@ -139,223 +139,44 @@ You can set your preferences for the color scheme to be used in the user's brows
 #### 🟠 **`colors`** _(required)_
 The colors object is where define your theme colors palette.
 
-<style>
-  .row{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-  }
-  .color{
-    display: flex;
-    flex-direction: column;
-    item-align: center;
-    justify-content: center;
-    gap: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding:15px;
-  }
+- `primary` **(required)**: The main color of your brand
+- `primary-dark` _(optional auto-generated)_: The darker version of the `primary` color
+- `primary-content` _(optional auto-generated)_: The color to use for text and icons on top of the `primary` color
+  
+<br>
 
-  .color-circle{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+- `secondary` **(required)**: The secondary color of your brand
+- `secondary-dark` _(optional auto-generated)_: The darker version of the `secondary` color
+- `secondary-content` _(optional auto-generated)_: The color to use for text and icons on top of the `secondary` color
 
-    outline: 2px solid transparent;
-    outline-offset: 4px;
+<br>
 
-    outline-width: 1px;
-    outline-color: #e6e6e6;
-  }
+- `accent` **(required)**: The accent color of your brand
+- `accent-dark` _(optional auto-generated)_: The darker version of the `accent` color
+- `accent-content` _(optional auto-generated)_: The color to use for text and icons on top of the `accent` color
 
-  .primary{
-    background-color: #e0a82e;
-  }
-  .primary-dark{
-    background-color: #ba881c;
-  }
-  .primary-content{
-    background-color: #18182f;
-  }
+<br>
 
-  .secondary{
-    background-color: #f9d72f;
-  }
-  .secondary-dark{
-    background-color: #e4bf07;
-  }
-  .secondary-content{
-    background-color: #18182f;
-  }
+- `neutral` **(required)**: The neutral color of your brand
+- `neutral-dark` _(optional auto-generated)_: The darker version of the `neutral` color
+- `neutral-content` _(optional auto-generated)_: The color to use for text and icons on top of the `neutral` color
 
-  .accent{
-    background-color: purple;
-  }
-  .accent-dark{
-    background-color: #e4bf07;
-  }
-  .accent-content{
-    background-color: #18182f;
-  }
+<br>
 
-  .neutral{
-    background-color: #181830;
-  }
-  .neutral-dark{
-    background-color: #131325;
-  }
-  .neutral-content{
-    background-color: #babaee;
-  }
+- `base` **(required)**: The base color of your brand
+- `base-dark` _(optional auto-generated)_: The darker version of the `base` color
+- `base-darkest` _(optional auto-generated)_: The darkest version of the `base` color
+- `base-content` _(optional auto-generated)_: The color to use for text and icons on top of the `base` color
 
+<br>
 
-  .base{
-    background-color: #fff;
-  }
-  .base-dark{
-    background-color: #e6e6e6;
-  }
-  .base-darkest{
-    background-color: #cfcfcf;
-  }
-  .base-content{
-    background-color: #333333;
-  }
+- `info` _(optional)_: The info color of your brand
+- `info-content` _(optional)_: The color to use for text and icons on top of the `info` color
+- `warning` _(optional)_: The warning color of your brand
+- `warning-content` _(optional)_: The color to use for text and icons on top of the `warning` color
+- `error` _(optional)_: The error color of your brand
+- `error-content` _(optional)_: The color to use for text and icons on top of the `error` color
 
-  .info{
-    background-color: #3abff8;
-  }
-  .info-content{
-    background-color: #002b3d;
-  }
+<br>
 
-  .warning{
-    background-color: #fbbd23;
-  }
-  .warning-content{
-    background-color: #382800;
-  }
-
-  .error{
-    background-color: #f87272;
-  }
-  .error-content{
-    background-color: #470000;
-  }
-
-  .grid{
-    max-width: 800px;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0,1fr));
-    place-items: center;
-    gap: 20px;
-    border-radius: 20px;
-    padding: 30px;
-  }
-</style>
-
-<div class="grid">
-  <div class="color">
-    <span>Primary</span>
-    <div class="color-circle primary"></div>
-  </div>
-  <div class="color">
-    <span>Primary Dark</span>
-    <div class="color-circle primary-dark"></div>
-  </div>
-  <div class="color">
-    <span>Primary Content</span>
-    <div class="color-circle primary-content"></div>
-  </div>
-  <div></div>
-  <div class="color">
-    <span>Secondary</span>
-    <div class="color-circle secondary"></div>
-  </div>
-  <div class="color">
-    <span>Secondary Dark</span>
-    <div class="color-circle secondary-dark"></div>
-  </div>
-  <div class="color">
-    <span>Secondary Content</span>
-    <div class="color-circle secondary-content"></div>
-  </div>
-  <div></div>
-  <div class="color">
-    <span>Accent</span>
-    <div class="color-circle accent"></div>
-  </div>
-  <div class="color">
-    <span>Accent Dark</span>
-    <div class="color-circle accent-dark"></div>
-  </div>
-  <div class="color">
-    <span>Accent Content</span>
-    <div class="color-circle accent-content"></div>
-  </div>
-  <div></div>
-  <div class="color">
-    <span>Neutral</span>
-    <div class="color-circle neutral"></div>
-  </div>
-  <div class="color">
-    <span>Neutral Dark</span>
-    <div class="color-circle neutral-dark"></div>
-  </div>
-  <div class="color">
-    <span>Neutral Content</span>
-    <div class="color-circle neutral-content"></div>
-  </div>
-  <div></div>
-  <div class="color">
-    <span>Base</span>
-    <div class="color-circle base"></div>
-  </div>
-  <div class="color">
-    <span>Base Dark</span>
-    <div class="color-circle base-dark"></div>
-  </div>
-  <div class="color">
-    <span>Base Darkest</span>
-    <div class="color-circle base-darkest"></div>
-  </div>
-  <div class="color">
-    <span>Base Content</span>
-    <div class="color-circle base-content"></div>
-  </div>
-  <div class="color">
-    <span>Info</span>
-    <div class="color-circle info"></div>
-  </div>
-  <div class="color">
-    <span>Info Content</span>
-    <div class="color-circle info-content"></div>
-  </div>
-  <div></div>
-  <div></div>
-  <div class="color">
-    <span>Warning</span>
-    <div class="color-circle warning"></div>
-  </div>
-  <div class="color">
-    <span>Warning Content</span>
-    <div class="color-circle warning-content"></div>
-  </div>
-  <div></div>
-  <div></div>
-   <div class="color">
-    <span>Error</span>
-    <div class="color-circle error"></div>
-  </div>
-  <div class="color">
-    <span>Error Content</span>
-    <div class="color-circle error-content"></div>
-  </div>
-  <div></div>
-  <div></div>
-
-</div>
-
-
-
+![color-palette](../../assets/palette.png)
