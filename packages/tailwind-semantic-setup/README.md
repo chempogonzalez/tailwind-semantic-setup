@@ -1,6 +1,6 @@
 # 🧬 tailwind-semantic-setup
 
-[![npm version](https://img.shields.io/npm/v/tailwind-semantic-setup?color=blue&style=flat-square)](https://www.npmjs.com/package/classname-manager)
+[![npm version](https://img.shields.io/npm/v/tailwind-semantic-setup?color=blue&style=flat-square)](https://www.npmjs.com/package/tailwind-semantic-setup)
 
 Tailwind preset to enable a good semantic setup for better Design Systems
 
@@ -10,9 +10,9 @@ Tailwind preset to enable a good semantic setup for better Design Systems
   - [🚀 **Features**](#-features)
   - [📦 **Installation**](#-installation)
   - [💻 **Usage example**](#-usage-example)
-    - [1️⃣ Add the preset to your tailwind config](#1️⃣-add-the-preset-to-your-tailwind-config)
-    - [2️⃣ Add the `data-theme` attribute to your html code](#2️⃣-add-the-data-theme-attribute-to-your-html-code)
-    - [3️⃣ Use the theme classes](#3️⃣-use-the-theme-classes)
+    - [1️⃣  Add the preset to your tailwind config](#1️⃣--add-the-preset-to-your-tailwind-config)
+    - [2️⃣  Add the `data-theme` attribute to your html code](#2️⃣--add-the-data-theme-attribute-to-your-html-code)
+    - [3️⃣  Use the theme classes](#3️⃣--use-the-theme-classes)
   - [📖 **Documentation**](#-documentation)
     - [🎨 **Themes**](#-themes)
       - [🟠 **`name`** _(required)_](#-name-required)
@@ -51,7 +51,7 @@ pnpm add tailwind-semantic-setup
 
 ## 💻 **Usage example**
 
-### 1️⃣ Add the preset to your tailwind config
+### 1️⃣  Add the preset to your tailwind config
 With the `semanticSetup` property you can setup your themes to be handled by the preset.
 
 ```js
@@ -77,7 +77,7 @@ module.exports = {
 }
 ```
 
-### 2️⃣ Add the `data-theme` attribute to your html code
+### 2️⃣  Add the `data-theme` attribute to your html code
 You can put it where you want, but it's recommended to put it in the html tag to have a global access to the theme for the entire application.
 ```html
 <html data-theme="light">
@@ -85,7 +85,7 @@ You can put it where you want, but it's recommended to put it in the html tag to
 </html>
 ```
 
-### 3️⃣ Use the theme classes
+### 3️⃣  Use the theme classes
 ```html
 <div class="bg-primary text-secondary">
   <!-- ... -->
