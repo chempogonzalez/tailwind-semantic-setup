@@ -20,6 +20,8 @@ Tailwind preset to enable a good semantic setup for better Design Systems
       - [🟠 **`colors`** _(required)_](#-colors-required)
     - [This README.md file has been written keeping in mind](#this-readmemd-file-has-been-written-keeping-in-mind)
 
+<br>
+<br>
 
 ## 🚀 **Features**
 - ✅ Multiple themes support
@@ -80,7 +82,7 @@ module.exports = {
 ### 2️⃣  Add the `data-theme` attribute to your html code
 You can put it where you want, but it's recommended to put it in the html tag to have a global access to the theme for the entire application.
 ```html
-<html data-theme="light">
+<html data-theme="my-brand">
   <!-- ... -->
 </html>
 ```
