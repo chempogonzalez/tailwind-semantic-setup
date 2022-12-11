@@ -12,7 +12,7 @@ function getThemeCssVariables (userColorsObject) {
     const [cssVariableName] = getCssVariablesNames(colorVariable)
 
     const userColor = userColorsObject[colorName]
-    // If user has provided a color for this variable, use it
+    // If user has provided a color for this variable, just use it
     if (userColor) {
       const hslColor = convertToHsl(userColor)
       cssVariables[cssVariableName] = hslColor
@@ -28,12 +28,15 @@ function getThemeCssVariables (userColorsObject) {
       return
     }
 
-    if (colorName.includes('-dark') || colorName.includes('-content')) {
+    const isDarkColor = colorName.includes('-dark')
+    const isContentColor = colorName.includes('-content')
+
+    if (isDarkColor || isContentColor) {
       const baseColorName = colorName.replace('-dark', '').replace('-content', '')
       const userBaseColor = userColorsObject[baseColorName]
 
       const color = userBaseColor ?? defaultThemeColors[baseColorName]
-      cssVariables[cssVariableName] = colorName.includes('-dark')
+      cssVariables[cssVariableName] = isDarkColor
         ? convertToDarkerHsl(color)
         : convertToReadableHsl(color)
       return
