@@ -1,5 +1,6 @@
 # 🧬 tailwind-semantic-setup
-[![npm version](https://img.shields.io/npm/v/classname-manager?color=blue&style=flat-square)](https://www.npmjs.com/package/classname-manager)
+
+[![npm version](https://img.shields.io/npm/v/tailwind-semantic-setup?color=blue&style=flat-square)](https://www.npmjs.com/package/classname-manager)
 
 Tailwind preset to enable a good semantic setup for better Design Systems
 
@@ -12,7 +13,7 @@ Tailwind preset to enable a good semantic setup for better Design Systems
     - [1️⃣ Add the preset to your tailwind config](#1️⃣-add-the-preset-to-your-tailwind-config)
     - [2️⃣ Add the `data-theme` attribute to your html code](#2️⃣-add-the-data-theme-attribute-to-your-html-code)
     - [3️⃣ Use the theme classes](#3️⃣-use-the-theme-classes)
-  - [📖 Documentation](#-documentation)
+  - [📖 **Documentation**](#-documentation)
     - [🎨 **Themes**](#-themes)
       - [🟠 **`name`** _(required)_](#-name-required)
       - [🟠 **`preferredColorScheme`** _(optional)_](#-preferredcolorscheme-optional)
@@ -97,7 +98,7 @@ You can put it where you want, but it's recommended to put it in the html tag to
 
 <br>
 
-## 📖 Documentation
+## 📖 **Documentation**
 
 ### 🎨 **Themes**
 You can define multiple themes in the `semanticSetup` property of your tailwind config.
