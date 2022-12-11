@@ -180,7 +180,8 @@ The colors object is where define your theme colors palette.
 
 <br>
 
-![color-palette](https://github.com/chempogonzalez/tailwind-semantic-setup/blob/main/assets/palette.png)
+
+![color-palette-image](https://github.com/chempogonzalez/tailwind-semantic-setup/blob/main/assets/palette.png)
 
 <br>
 

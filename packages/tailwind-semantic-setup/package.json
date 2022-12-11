@@ -2,10 +2,14 @@
   "name": "tailwind-semantic-setup",
   "type": "module",
   "source": "index.js",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "",
   "author": "Chempo González <chempo.glez@gmail.com> (https://github.com/chempogonzalez/)",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chempogonzalez/tailwind-semantic-setup.git"
+  },
   "keywords": [
     "tailwindcss",
     "tailwind",
