@@ -1,46 +1,4 @@
-
-export const VARIABLES_MAP = {
-  'primary': '--p',
-  'primary-dark': ['--pd', '--p'],
-  'primary-content': '--pc',
-
-  'secondary': '--s',
-  'secondary-dark': ['--sd', '--s'],
-  'secondary-content': '--sc',
-
-  'accent': '--a',
-  'accent-dark': ['--ad', '--a'],
-  'accent-content': '--ac',
-
-  'neutral': '--n',
-  'neutral-dark': ['--nd', '--n'],
-  'neutral-content': '--nc',
-
-  'base': '--b',
-  'base-dark': ['--bd', '--b'],
-  'base-darkest': ['--bdt', '--bd'],
-  'base-content': '--bc',
-
-  'info': '--i',
-  'info-content': ['--ic', '--nc'],
-
-  'success': '--su',
-  'success-content': ['--suc', '--nc'],
-
-  'warning': '--w',
-  'warning-content': ['--wc', '--nc'],
-
-  'error': '--e',
-  'error-content': ['--ec', '--nc'],
-}
-
-export const getCssVariablesNames = (variable) => {
-  return Array.isArray(variable)
-    ? variable
-    : [variable, undefined]
-}
-
-
+import { defaultThemeColors } from './helpers/default-theme-colors.js'
 
 
 
@@ -56,31 +14,31 @@ function withOpacityValue (variable, fallbackColor = '') {
 }
 
 
+/**
+ * Get tailwind theme colors object from themes config array
+ *
+ * @example
+ * primary: 'var(--primary)',  // with opacity function
+ * secondary: 'var(--secondary)',
+ */
+export function getColorsByThemesConfig (themesConfigArray) {
+  const colors = {
+    transparent: 'transparent',
+    current: 'currentColor',
+  }
 
-function getParsedColors () {
-  const colors = Object.entries(VARIABLES_MAP).reduce((acc, [variableKey, value]) => {
-    const [variable, fallbackColor] = getCssVariablesNames(value)
+  const uniqueColorNames = Array.from(
+    new Set(
+      [
+        ...Object.keys(defaultThemeColors),
+        ...themesConfigArray.map(theme => Object.keys(theme.colors)).flat(2),
+      ],
+    ),
+  )
 
-    acc[variableKey] = withOpacityValue(variable, fallbackColor)
-
-    return acc
-  }, {})
+  uniqueColorNames.forEach((colorName) => {
+    colors[colorName] = withOpacityValue(`--${colorName}`)
+  })
 
   return colors
-}
-
-
-
-export const colors = {
-  transparent: 'transparent',
-  current: 'currentColor',
-
-  /**
-   * Semantic colors pointing to css variables
-   *
-   * primary: 'var(--p)',
-   * primaryFocus: 'var(--pf, var(--p))',
-   * ...
-   */
-  ...getParsedColors(),
 }

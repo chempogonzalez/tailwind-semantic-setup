@@ -1,5 +1,8 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+const { withSemanticSetup } = require('tailwind-semantic-setup')
+
+
+
+module.exports = withSemanticSetup({
   darkMode: 'class',
   content: [
     './index.html',
@@ -20,8 +23,13 @@ module.exports = {
           base: '#fff',
         },
       },
+      {
+        name: 'test2',
+        preferredColorScheme: ['dark', 'light'],
+        colors: {
+          test: 'red',
+        },
+      },
     ],
   },
-  plugins: [],
-  presets: [require('tailwind-semantic-setup')],
-}
+})

@@ -13,9 +13,13 @@
   "keywords": [
     "tailwindcss",
     "tailwind",
-    "preset",
     "semantic",
-    "setup"
+    "theme",
+    "multi-theme",
+    "preset",
+    "setup",
+    "plugin",
+    "best practices"
   ],
   "exports": {
     "require": "./dist/tailwind-semantic-setup.cjs",
@@ -27,7 +31,8 @@
   "types": "./types/index.d.ts",
   "files": [
     "dist",
-    "types"
+    "types",
+    "types.d.ts"
   ],
   "scripts": {
     "build": "microbundle",

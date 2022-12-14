@@ -1,15 +1,20 @@
 import plugin from 'tailwindcss/plugin'
 
-import { colors, getCssVariablesNames, VARIABLES_MAP } from './colors.js'
+import { getColorsByThemesConfig } from './colors.js'
 import { convertToHsl, convertToDarkerHsl, convertToReadableHsl } from './helpers/colors.js'
 import { defaultThemeColors } from './helpers/default-theme-colors.js'
 
 
 
 function getThemeCssVariables (userColorsObject) {
+  const colorsToProcess = {
+    ...defaultThemeColors,
+    ...userColorsObject,
+  }
   const cssVariables = {}
-  Object.entries(VARIABLES_MAP).forEach(([colorName, colorVariable]) => {
-    const [cssVariableName] = getCssVariablesNames(colorVariable)
+
+  Object.entries(colorsToProcess).forEach(([colorName, colorValue]) => {
+    const cssVariableName = `--${colorName}`
 
     const userColor = userColorsObject[colorName]
     // If user has provided a color for this variable, just use it
@@ -19,6 +24,7 @@ function getThemeCssVariables (userColorsObject) {
       return
     }
 
+    // base-dark and base-darkest colors (autogenerate them) ------------------
     if (['base-dark', 'base-darkest'].includes(colorName)) {
       const baseColorToDarken = colorName === 'base-darkest' ? 'base-dark' : 'base'
       const userBaseColor = userColorsObject[baseColorToDarken]
@@ -27,11 +33,16 @@ function getThemeCssVariables (userColorsObject) {
       cssVariables[cssVariableName] = convertToDarkerHsl(color, 0.08)
       return
     }
+    // ------------------------------------------------------------------------
 
+
+
+    // -dark and -content colors (autogenerate them) --------------------------
+    const isManagedColor = Boolean(defaultThemeColors[colorName])
     const isDarkColor = colorName.includes('-dark')
     const isContentColor = colorName.includes('-content')
 
-    if (isDarkColor || isContentColor) {
+    if (isManagedColor && (isDarkColor || isContentColor)) {
       const baseColorName = colorName.replace('-dark', '').replace('-content', '')
       const userBaseColor = userColorsObject[baseColorName]
 
@@ -41,11 +52,9 @@ function getThemeCssVariables (userColorsObject) {
         : convertToReadableHsl(color)
       return
     }
+    // ------------------------------------------------------------------------
 
 
-
-    // If user has not provided a color for this variable, use the default one
-    const colorValue = defaultThemeColors[colorName]
     const hslColor = convertToHsl(colorValue)
     cssVariables[cssVariableName] = hslColor
   })
@@ -68,10 +77,7 @@ function getBaseThemesCssVariables (themes) {
 
 
 /** @type {import('tailwindcss').Config} */
-const config = {
-  theme: {
-    colors,
-  },
+const pluginConfig = {
   plugins: [
     /* [start] ------------------ CUSTOM PLUGIN ---------------------------------- */
     plugin(function ({ addBase, matchUtilities, addVariant, theme, config }) {
@@ -83,12 +89,10 @@ const config = {
       addBase(rootThemesWithCssVariables)
 
       // Setup base background and text color
-      const [baseColorVariable] = getCssVariablesNames(VARIABLES_MAP.base)
-      const [baseContentColorVariable] = getCssVariablesNames(VARIABLES_MAP['base-content'])
       addBase({
         ':root [data-theme]': {
-          backgroundColor: `hsl(var(${baseColorVariable}) / var(--tw-bg-opacity, 1))`,
-          color: `hsl(var(${baseContentColorVariable}) / var(--tw-text-opacity, 1))`,
+          backgroundColor: 'hsl(var(--base) / var(--tw-bg-opacity, 1))',
+          color: 'hsl(var(--base-content) / var(--tw-text-opacity, 1))',
         },
       })
 
@@ -139,4 +143,39 @@ const config = {
 }
 
 
-export default config
+
+/**
+ * Quick setup for tailwindcss with semantic-ui colors
+ *
+ * @param {import('tailwindcss').Config & import('./types').SemanticSetup } userConfig
+ * @returns {import('tailwindcss').Config}
+ */
+export function withSemanticSetup (userConfig = {}) {
+  const {
+    plugins: userPlugins = [],
+    theme: userTheme = {},
+    semanticSetup = {},
+  } = userConfig
+
+  return {
+    ...userConfig,
+    plugins: [
+      ...userPlugins,
+      ...pluginConfig.plugins,
+    ],
+    theme: {
+      ...userTheme,
+      colors: getColorsByThemesConfig(semanticSetup.themes),
+      /**
+       * override user extended colors in case they are set up
+       * to force using semantic-ui colors
+       */
+      extend: userTheme?.extend
+        ? {
+            ...userTheme.extend,
+            colors: undefined,
+          }
+        : undefined,
+    },
+  }
+}
