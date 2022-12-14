@@ -6,6 +6,12 @@
       "rules": {
         "@typescript-eslint/no-var-requires": "off"
       }
+    },
+    {
+      "files": [ "**/*.md/*.js" ],
+      "rules": {
+        "import/newline-after-import": "off"
+      }
     }
   ]
 }

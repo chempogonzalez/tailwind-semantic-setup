@@ -10,7 +10,7 @@ Tailwind preset to enable a good semantic setup for better Design Systems
   - [🚀 **Features**](#-features)
   - [📦 **Installation**](#-installation)
   - [💻 **Usage example**](#-usage-example)
-    - [1️⃣  Add the preset to your tailwind config](#1️⃣--add-the-preset-to-your-tailwind-config)
+    - [1️⃣  Wrap your tailwind config and set your themes](#1️⃣--wrap-your-tailwind-config-and-set-your-themes)
     - [2️⃣  Add the `data-theme` attribute to your html code](#2️⃣--add-the-data-theme-attribute-to-your-html-code)
     - [3️⃣  Use the theme classes](#3️⃣--use-the-theme-classes)
   - [📖 **Documentation**](#-documentation)
@@ -18,6 +18,8 @@ Tailwind preset to enable a good semantic setup for better Design Systems
       - [🟠 **`name`** _(required)_](#-name-required)
       - [🟠 **`preferredColorScheme`** _(optional)_](#-preferredcolorscheme-optional)
       - [🟠 **`colors`** _(required)_](#-colors-required)
+        - [**(required - added by default)**](#required---added-by-default)
+        - [**(optional - auto-generated for required colors)**](#optional---auto-generated-for-required-colors)
     - [This README.md file has been written keeping in mind](#this-readmemd-file-has-been-written-keeping-in-mind)
 
 <br>
@@ -53,13 +55,17 @@ pnpm add tailwind-semantic-setup
 
 ## 💻 **Usage example**
 
-### 1️⃣  Add the preset to your tailwind config
+### 1️⃣  Wrap your tailwind config and set your themes
+Wrap your tailwind config with the `withSemanticSetup` function.
+<br>
 With the `semanticSetup` property you can setup your themes to be handled by the preset.
 
 ```js
 // tailwind.config.js
-module.exports = {
-  // ... your tailwind config
+const { withSemanticSetup } = require('tailwind-semantic-setup')
+
+module.exports = withSemanticSetup({
+  /* ... your tailwind config */
   semanticSetup: {
     themes: [
       {
@@ -75,8 +81,7 @@ module.exports = {
       // ... other themes
     ],
   },
-  presets: [require('tailwind-semantic-setup')],
-}
+})
 ```
 
 ### 2️⃣  Add the `data-theme` attribute to your html code
@@ -111,8 +116,9 @@ Each theme must have a `name` and a `colors` object.
 
 ```js
 // tailwind.config.js
+const { withSemanticSetup } = require('tailwind-semantic-setup')
 
-module.exports = {
+module.exports = withSemanticSetup({
   // ... your tailwind config
   semanticSetup: {
     themes: [
@@ -130,8 +136,7 @@ module.exports = {
       // ... other themes
     ],
   },
-  presets: [require('tailwind-semantic-setup')],
-}
+})
 ```
 
 #### 🟠 **`name`** _(required)_
@@ -141,36 +146,25 @@ The name of the theme. It will be used to generate the classes and the _**data-t
 You can set your preferences for the color scheme to be used in the user's browser. It will set _**color-scheme**_ css property
 
 #### 🟠 **`colors`** _(required)_
-The colors object is where define your theme colors palette.
+The colors object is where you define your themes colors palette. Semantic Setup provide you a semantic default setup but you can add your custom colors, but you must define the following ones:
 
-- `primary` **(required)**: The main color of your brand
-- `primary-dark` _(optional auto-generated)_: The darker version of the `primary` color
-- `primary-content` _(optional auto-generated)_: The color to use for text and icons on top of the `primary` color
-  
+##### **(required - added by default)**
+- `primary`: The main color of your brand
+- `secondary`: The secondary color of your brand
+- `accent`: The accent color of your brand
+- `neutral`: The neutral color of your brand
 <br>
 
-- `secondary` **(required)**: The secondary color of your brand
-- `secondary-dark` _(optional auto-generated)_: The darker version of the `secondary` color
-- `secondary-content` _(optional auto-generated)_: The color to use for text and icons on top of the `secondary` color
-
-<br>
-
-- `accent` **(required)**: The accent color of your brand
-- `accent-dark` _(optional auto-generated)_: The darker version of the `accent` color
-- `accent-content` _(optional auto-generated)_: The color to use for text and icons on top of the `accent` color
+##### **(optional - auto-generated for required colors)**
+- `(required)-dark`: The darker version of the (required-name) color _(i.e. `primary-dark`)_
+- `(required)-content`: The readable color to use for text and icons on top of the (required-name) color _(i.e. `primary-content`)_
 
 <br>
 
-- `neutral` **(required)**: The neutral color of your brand
-- `neutral-dark` _(optional auto-generated)_: The darker version of the `neutral` color
-- `neutral-content` _(optional auto-generated)_: The color to use for text and icons on top of the `neutral` color
-
-<br>
-
-- `base` **(required)**: The base color of your brand
+- `base` **(required)**: The base color of your brand (background color)
 - `base-dark` _(optional auto-generated)_: The darker version of the `base` color
 - `base-darkest` _(optional auto-generated)_: The darkest version of the `base` color
-- `base-content` _(optional auto-generated)_: The color to use for text and icons on top of the `base` color
+- `base-content` _(optional auto-generated)_: The readable color to use for text and icons on top of the `base` color
 
 <br>
 
@@ -191,7 +185,7 @@ The colors object is where define your theme colors palette.
 This approach allows you to have a consistent color palette for your brand with different themes in a very simple way.
 <br>
 
-The colors approach is mainly based on [daisyui colors palette](https://daisyui.com/docs/colors) but adding some other nice features to make it more customizable/extendable for your brand.
+The default colors approach is mainly based on [daisyui colors palette](https://daisyui.com/docs/colors) but adding some other nice features to make it more customizable/extendable for your brand.
 
 <br>
 <br>
