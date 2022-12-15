@@ -4,31 +4,11 @@
 
 Tailwind preset to enable a good semantic setup for better Design Systems
 
-<br>
-
-- [🧬 tailwind-semantic-setup](#-tailwind-semantic-setup)
-  - [🚀 **Features**](#-features)
-  - [📦 **Installation**](#-installation)
-  - [💻 **Usage example**](#-usage-example)
-    - [1️⃣  Wrap your tailwind config and set your themes](#1️⃣--wrap-your-tailwind-config-and-set-your-themes)
-    - [2️⃣  Add the `data-theme` attribute to your html code](#2️⃣--add-the-data-theme-attribute-to-your-html-code)
-    - [3️⃣  Use the theme classes](#3️⃣--use-the-theme-classes)
-  - [📖 **Documentation**](#-documentation)
-    - [🎨 **Themes**](#-themes)
-      - [🟠 **`name`** _(required)_](#-name-required)
-      - [🟠 **`preferredColorScheme`** _(optional)_](#-preferredcolorscheme-optional)
-      - [🟠 **`colors`** _(required)_](#-colors-required)
-        - [**(required - added by default)**](#required---added-by-default)
-        - [**(optional - auto-generated for required colors)**](#optional---auto-generated-for-required-colors)
-    - [This README.md file has been written keeping in mind](#this-readmemd-file-has-been-written-keeping-in-mind)
-
-<br>
-<br>
 
 ## 🚀 **Features**
 - ✅ Multiple themes support
 - 🔥 Auto-generate darker and contrast colors _(better readability)_
-- 📦 All official tailwind plugins included by default
+- 📦 All [official tailwind plugins](https://tailwindcss.com/docs/plugins#official-plugins) included by default
 - 🚀 Custom addons to make your life easier:
    -  `theme name variants` to set classes only for a specific theme
    -  `wh` utility to set width and height at the same time
@@ -42,21 +22,21 @@ Tailwind preset to enable a good semantic setup for better Design Systems
 ## 📦 **Installation**
 ```bash
 # NPM
-npm install tailwind-semantic-setup
+npm install -D tailwind-semantic-setup
 
 # YARN
-yarn add tailwind-semantic-setup
+yarn add -D tailwind-semantic-setup
 
 # PNPM
-pnpm add tailwind-semantic-setup
+pnpm add -D tailwind-semantic-setup
 ```
 
 <br>
 
 ## 💻 **Usage example**
 
-### 1️⃣  Wrap your tailwind config and set your themes
-Wrap your tailwind config with the `withSemanticSetup` function.
+### 🟣 1. Wrap your tailwind config and set your themes
+In your tailwind config file, wrap your tailwind config with the `withSemanticSetup` function.
 <br>
 With the `semanticSetup` property you can setup your themes to be handled by the preset.
 
@@ -84,7 +64,7 @@ module.exports = withSemanticSetup({
 })
 ```
 
-### 2️⃣  Add the `data-theme` attribute to your html code
+### 🟣 2. Add the `data-theme` attribute to your html code
 You can put it where you want, but it's recommended to put it in the html tag to have a global access to the theme for the entire application.
 ```html
 <html data-theme="my-brand">
@@ -92,7 +72,7 @@ You can put it where you want, but it's recommended to put it in the html tag to
 </html>
 ```
 
-### 3️⃣  Use the theme classes
+### 🟣 3.  Use the theme classes
 ```html
 <div class="bg-primary text-secondary">
   <!-- ... -->
@@ -146,34 +126,30 @@ The name of the theme. It will be used to generate the classes and the _**data-t
 You can set your preferences for the color scheme to be used in the user's browser. It will set _**color-scheme**_ css property
 
 #### 🟠 **`colors`** _(required)_
-The colors object is where you define your themes colors palette. Semantic Setup provide you a semantic default setup but you can add your custom colors, but you must define the following ones:
-
-##### **(required - added by default)**
-- `primary`: The main color of your brand
-- `secondary`: The secondary color of your brand
-- `accent`: The accent color of your brand
-- `neutral`: The neutral color of your brand
+Semantic Setup provides you a semantic default setup but **you can add your custom colors**.
 <br>
 
-##### **(optional - auto-generated for required colors)**
-- `(required)-dark`: The darker version of the (required-name) color _(i.e. `primary-dark`)_
-- `(required)-content`: The readable color to use for text and icons on top of the (required-name) color _(i.e. `primary-content`)_
+Here you can see the default colors and the ones that are auto-generated for you:
+
+##### **(Required - added by default)**
+▪️ `primary`: The main color of your brand<br>
+▪️ `secondary`: The secondary color of your brand<br>
+▪️ `accent`: Color to have high color contrasts and highlight.<br>
+▪️ `neutral`: The neutral color of your brand<br>
+▪️ `base`: The base color of your brand (background color)
+
+▪️ `info`: The info color of your brand<br>
+▪️ `warning`: The warning color of your brand<br>
+▪️ `error`: The error color of your brand
+<br>
+
+##### **(Optional - auto-generated for Required colors)**
+- `(colorName)-dark`: The darker version of the (colorName) color _(i.e. `primary-dark`)_
+- `(colorName)-content`: The readable color to use for text and icons on top of the (colorName) color _(i.e. `primary-content`)_
+- `base-darkest` _(just for base color)_: The darkest version of the `base` color
 
 <br>
 
-- `base` **(required)**: The base color of your brand (background color)
-- `base-dark` _(optional auto-generated)_: The darker version of the `base` color
-- `base-darkest` _(optional auto-generated)_: The darkest version of the `base` color
-- `base-content` _(optional auto-generated)_: The readable color to use for text and icons on top of the `base` color
-
-<br>
-
-- `info` _(optional)_: The info color of your brand
-- `info-content` _(optional)_: The color to use for text and icons on top of the `info` color
-- `warning` _(optional)_: The warning color of your brand
-- `warning-content` _(optional)_: The color to use for text and icons on top of the `warning` color
-- `error` _(optional)_: The error color of your brand
-- `error-content` _(optional)_: The color to use for text and icons on top of the `error` color
 
 <br>
 
@@ -189,6 +165,53 @@ The default colors approach is mainly based on [daisyui colors palette](https://
 
 <br>
 <br>
+
+
+### 🚀 **Custom Addons**
+
+#### 🟠 **`theme name variants`**
+You can set classes only for a specific theme using the theme name variants.
+<br>
+The variant has the following format: `theme-(your-theme-name):class`
+
+```html
+<div class="p-4 theme-my-brand:p-8">
+  <!-- ... -->
+</div>
+```
+
+#### 🟠 **`wh`**
+You can set width and height at the same time.
+<br>
+
+```html
+<div class="wh-10">
+  <!-- ... -->
+</div>
+```
+
+#### 🟠 **`circle`**
+You can set a circle shape setting same width and height.
+
+```html
+<div class="circle-8">
+  <!-- ... -->
+</div>
+```
+
+#### 🟠 **`hocus`**
+You can set a hover and focus state using the `hocus` utility.
+
+```html
+<div class="bg-primary hocus:bg-primary-dark">
+  <!-- ... -->
+</div>
+```
+
+<br>
+<br>
+
+
 
 > Created with JavaScript! ⚡ and latin music 🎺🎵
 
