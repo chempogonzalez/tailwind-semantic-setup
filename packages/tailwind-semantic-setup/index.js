@@ -26,11 +26,11 @@ function getThemeCssVariables (userColorsObject) {
 
     // base-dark and base-darkest colors (autogenerate them) ------------------
     if (['base-dark', 'base-darkest'].includes(colorName)) {
-      const baseColorToDarken = colorName === 'base-darkest' ? 'base-dark' : 'base'
+      const baseColorToDarken = 'base'
       const userBaseColor = userColorsObject[baseColorToDarken]
 
       const color = userBaseColor ?? defaultThemeColors[baseColorToDarken]
-      cssVariables[cssVariableName] = convertToDarkerHsl(color, 0.08)
+      cssVariables[cssVariableName] = convertToDarkerHsl(color, colorName === 'base-darkest' ? 0.16 : 0.08)
       return
     }
     // ------------------------------------------------------------------------
