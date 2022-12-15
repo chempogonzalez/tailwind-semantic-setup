@@ -62,9 +62,23 @@ function getThemeCssVariables (userColorsObject) {
   return cssVariables
 }
 
+const assertArray = (value) => {
+  if (!Array.isArray(value))
+    throw new Error(`Expected array, got ${value}`)
+}
+
+const assertColors = (colors) => {
+  const allColorsAreString = Object.values(colors).every(c => typeof c === 'string')
+  if (!allColorsAreString)
+    throw new Error(`color values must be strings, got ${colors}`)
+}
+
 function getBaseThemesCssVariables (themes) {
   // Get and set css variables for each theme
   return themes.reduce((acc, { name, colors, preferredColorScheme }) => {
+    assertArray(preferredColorScheme)
+    assertColors(colors)
+
     const cssVariables = getThemeCssVariables(colors)
     acc[`[data-theme="${name}"]`] = {
       'color-scheme': preferredColorScheme?.join(' '),
