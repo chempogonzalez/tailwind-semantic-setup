@@ -20,7 +20,7 @@ module.exports = withSemanticSetup({
           primary: '#e0a82e',
           secondary: '#f9d72f',
           accent: 'purple',
-          base: '#fff',
+          root: '#fff',
         },
       },
       {

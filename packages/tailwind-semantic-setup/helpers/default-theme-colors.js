@@ -16,10 +16,10 @@ export const defaultThemeColors = {
   'neutral-dark': '#131325',
   'neutral-content': '#babaee',
 
-  'base': '#ffffff', //
-  'base-dark': '#e6e6e6',
-  'base-darkest': '#cfcfcf',
-  'base-content': '#333333',
+  'root': '#ffffff', //
+  'root-dark': '#e6e6e6',
+  'root-darkest': '#cfcfcf',
+  'root-content': '#333333',
 
   'info': '#3abff8',
   'info-content': '#002b3d',

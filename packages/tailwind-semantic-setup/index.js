@@ -24,13 +24,13 @@ function getThemeCssVariables (userColorsObject) {
       return
     }
 
-    // base-dark and base-darkest colors (autogenerate them) ------------------
-    if (['base-dark', 'base-darkest'].includes(colorName)) {
-      const baseColorToDarken = 'base'
-      const userBaseColor = userColorsObject[baseColorToDarken]
+    // root-dark and root-darkest colors (autogenerate them) ------------------
+    if (['root-dark', 'root-darkest'].includes(colorName)) {
+      const rootColorToDarken = 'root'
+      const userRootColor = userColorsObject[rootColorToDarken]
 
-      const color = userBaseColor ?? defaultThemeColors[baseColorToDarken]
-      cssVariables[cssVariableName] = convertToDarkerHsl(color, colorName === 'base-darkest' ? 0.16 : 0.08)
+      const color = userRootColor ?? defaultThemeColors[rootColorToDarken]
+      cssVariables[cssVariableName] = convertToDarkerHsl(color, colorName === 'root-darkest' ? 0.16 : 0.08)
       return
     }
     // ------------------------------------------------------------------------
@@ -105,8 +105,8 @@ const pluginConfig = {
       // Setup base background and text color
       addBase({
         ':root [data-theme]': {
-          backgroundColor: 'hsl(var(--base) / var(--tw-bg-opacity, 1))',
-          color: 'hsl(var(--base-content) / var(--tw-text-opacity, 1))',
+          backgroundColor: 'hsl(var(--root) / var(--tw-bg-opacity, 1))',
+          color: 'hsl(var(--root-content) / var(--tw-text-opacity, 1))',
         },
       })
 

@@ -55,7 +55,7 @@ module.exports = withSemanticSetup({
           secondary: '#f9d72f',
           accent: '#00ffff',
           neutral: '#181830',
-          base: '#ffffff',
+          root: '#ffffff',
         },
       },
       // ... other themes
@@ -110,7 +110,7 @@ module.exports = withSemanticSetup({
           secondary: '#f9d72f',
           accent: '#00ffff',
           neutral: '#181830',
-          base: '#ffffff',
+          root: '#ffffff',
         },
       },
       // ... other themes
@@ -136,7 +136,7 @@ Here you can see the default colors and the ones that are auto-generated for you
 ▪️ `secondary`: The secondary color of your brand<br>
 ▪️ `accent`: Color to have high color contrasts and highlight.<br>
 ▪️ `neutral`: The neutral color of your brand<br>
-▪️ `base`: The base color of your brand (background color)
+▪️ `root`: The base color of your brand (background color)
 
 ▪️ `info`: The info color of your brand<br>
 ▪️ `warning`: The warning color of your brand<br>
@@ -146,7 +146,7 @@ Here you can see the default colors and the ones that are auto-generated for you
 ##### **(Optional - auto-generated for Required colors)**
 - `(colorName)-dark`: The darker version of the (colorName) color _(i.e. `primary-dark`)_
 - `(colorName)-content`: The readable color to use for text and icons on top of the (colorName) color _(i.e. `primary-content`)_
-- `base-darkest` _(just for base color)_: The darkest version of the `base` color
+- `root-darkest` _(just for base color)_: The darkest version of the `root` color
 
 <br>
 

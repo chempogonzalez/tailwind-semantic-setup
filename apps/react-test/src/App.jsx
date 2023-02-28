@@ -35,10 +35,10 @@ function App () {
         <ColorCircle label='Neutral Content' colorClassName='bg-neutral-content' />
         <div/>
 
-        <ColorCircle label='Base' colorClassName='bg-base' />
-        <ColorCircle label='Base Dark' colorClassName='bg-base-dark' />
-        <ColorCircle label='Base Darkest' colorClassName='bg-base-darkest' />
-        <ColorCircle label='Base Content' colorClassName='bg-base-content' />
+        <ColorCircle label='Root' colorClassName='bg-root' />
+        <ColorCircle label='Root Dark' colorClassName='bg-root-dark' />
+        <ColorCircle label='Root Darkest' colorClassName='bg-root-darkest' />
+        <ColorCircle label='Root Content' colorClassName='bg-root-content' />
 
         <ColorCircle label='Info' colorClassName='bg-info' />
         <ColorCircle label='Info Content' colorClassName='bg-info-content' />
