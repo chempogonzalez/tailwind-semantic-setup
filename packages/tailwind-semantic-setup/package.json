@@ -2,7 +2,7 @@
   "name": "tailwind-semantic-setup",
   "type": "module",
   "source": "index.js",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "🧬 Smart multi-theme tool for better semantic Design Systems",
   "author": "Chempo González <chempo.glez@gmail.com> (https://github.com/chempogonzalez/)",
   "license": "ISC",
