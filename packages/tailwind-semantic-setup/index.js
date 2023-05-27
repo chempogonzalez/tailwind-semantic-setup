@@ -17,7 +17,7 @@ function getThemeCssVariables (userColorsObject) {
     const cssVariableName = `--${colorName}`
 
     const userColor = userColorsObject[colorName]
-    // If user has provided a color for this variable, just use it
+
     if (userColor) {
       const hslColor = convertToHsl(userColor)
       cssVariables[cssVariableName] = hslColor
@@ -37,7 +37,7 @@ function getThemeCssVariables (userColorsObject) {
 
 
 
-    // -dark and -content colors (autogenerate them) --------------------------
+    // / *-dark and *-content colors (autogenerate them) --------------------------
     const isManagedColor = Boolean(defaultThemeColors[colorName])
     const isDarkColor = colorName.includes('-dark')
     const isContentColor = colorName.includes('-content')
@@ -63,7 +63,7 @@ function getThemeCssVariables (userColorsObject) {
 }
 
 const assertArray = (value) => {
-  if (!Array.isArray(value))
+  if (value && !Array.isArray(value))
     throw new Error(`Expected array, got ${value}`)
 }
 
@@ -90,15 +90,29 @@ function getBaseThemesCssVariables (themes) {
 }
 
 
-/** @type {import('tailwindcss').Config} */
-const pluginConfig = {
-  plugins: [
+/**
+ * @param {import('./types').SemanticSetup['semanticSetup']['plugins'] } userPluginsConfig
+ * @returns {import('tailwindcss').Config['plugins']}
+ * */
+function getSemanticSetupPlugins (userPluginsConfig = {}) {
+  const defaultPlugins = {
+    'typography': true,
+    'forms': true,
+    'line-clamp': false,
+    'aspect-ratio': true,
+  }
+
+  const activatedPluginsConfig = {
+    ...defaultPlugins,
+    ...userPluginsConfig,
+  }
+
+  /** @type {import('tailwindcss').Config['plugins']} */
+  const pluginsConfig = [
     /* [start] ------------------ CUSTOM PLUGIN ---------------------------------- */
     plugin(function ({ addBase, matchUtilities, addVariant, theme, config }) {
       const themes = config('semanticSetup.themes')
       const rootThemesWithCssVariables = getBaseThemesCssVariables(themes)
-
-
 
       addBase(rootThemesWithCssVariables)
 
@@ -146,14 +160,22 @@ const pluginConfig = {
     /* [end] -------------------- CUSTOM PLUGIN ---------------------------------- */
 
 
+  ]
 
-    /** Official tailwind plugins */
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
-    require('@tailwindcss/aspect-ratio'),
-  ],
+  /** Official tailwind plugins */
+  if (activatedPluginsConfig.typography)
+    pluginsConfig.push(require('@tailwindcss/typography'))
 
+  if (activatedPluginsConfig.forms)
+    pluginsConfig.push(require('@tailwindcss/forms'))
+
+  if (activatedPluginsConfig['line-clamp'])
+    pluginsConfig.push(require('@tailwindcss/line-clamp'))
+
+  if (activatedPluginsConfig['aspect-ratio'])
+    pluginsConfig.push(require('@tailwindcss/aspect-ratio'))
+
+  return pluginsConfig
 }
 
 
@@ -175,7 +197,7 @@ export function withSemanticSetup (userConfig = {}) {
     ...userConfig,
     plugins: [
       ...userPlugins,
-      ...pluginConfig.plugins,
+      ...getSemanticSetupPlugins(semanticSetup.plugins),
     ],
     theme: {
       ...userTheme,

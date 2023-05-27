@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/tailwind-semantic-setup?color=blue&style=flat-square)](https://www.npmjs.com/package/tailwind-semantic-setup)
 
-Tailwind preset to enable a good semantic setup for better Design Systems
+Smart multi-theme tool for better semantic Design Systems
 
 
 ## 🚀 **Features**
@@ -24,9 +24,6 @@ Tailwind preset to enable a good semantic setup for better Design Systems
 # NPM
 npm install -D tailwind-semantic-setup
 
-# YARN
-yarn add -D tailwind-semantic-setup
-
 # PNPM
 pnpm add -D tailwind-semantic-setup
 ```
@@ -38,7 +35,7 @@ pnpm add -D tailwind-semantic-setup
 ### 🟣 1. Wrap your tailwind config and set your themes
 In your tailwind config file, wrap your tailwind config with the `withSemanticSetup` function.
 <br>
-With the `semanticSetup` property you can setup your themes to be handled by the preset.
+With the `semanticSetup` property you can setup your themes to be handled automatically.
 
 ```js
 // tailwind.config.js
@@ -65,7 +62,7 @@ module.exports = withSemanticSetup({
 ```
 
 ### 🟣 2. Add the `data-theme` attribute to your html code
-You can put it where you want, but it's recommended to put it in the html tag to have a global access to the theme for the entire application.
+You can put it where you want, but it's recommended to put it in the html tag to make it global accessible for the entire application.
 ```html
 <html data-theme="my-brand">
   <!-- ... -->
@@ -74,7 +71,7 @@ You can put it where you want, but it's recommended to put it in the html tag to
 
 ### 🟣 3.  Use the theme classes
 ```html
-<div class="bg-primary text-secondary">
+<div class="bg-primary text-primary-content">
   <!-- ... -->
 </div>
 ```
@@ -165,6 +162,36 @@ The default colors approach is mainly based on [daisyui colors palette](https://
 
 <br>
 <br>
+
+
+### 🔌 **Default Plugins activate / deactivate**
+By default, all [official tailwind plugins](https://tailwindcss.com/docs/plugins#official-plugins) are activated.
+<br>
+You can deactivate them individually using the `plugins` property of the `semanticSetup` object in your tailwind config file.
+
+Here you can see the default plugins configuration:
+```js
+// tailwind.config.js
+const { withSemanticSetup } = require('tailwind-semantic-setup')
+
+module.exports = withSemanticSetup({
+  // ... your tailwind config
+  semanticSetup: {
+    plugins: {
+      // @tailwindcss/typography
+      'typography': true,
+      // @tailwindcss/forms
+      'forms': true,
+      // @tailwindcss/line-clamp
+      // Deactivated by default because it's part of tailwindcss v3.3.0
+      'line-clamp': false,
+      // @tailwindcss/aspect-ratio
+      'aspect-ratio': true,
+    },
+  },
+})
+```
+
 
 
 ### 🚀 **Custom Addons**

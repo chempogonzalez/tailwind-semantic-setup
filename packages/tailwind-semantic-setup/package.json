@@ -3,7 +3,7 @@
   "type": "module",
   "source": "index.js",
   "version": "1.0.5",
-  "description": "🧬 Tailwind preset to enable a good semantic setup for better Design Systems",
+  "description": "🧬 Smart multi-theme tool for better semantic Design Systems",
   "author": "Chempo González <chempo.glez@gmail.com> (https://github.com/chempogonzalez/)",
   "license": "ISC",
   "repository": {
@@ -45,8 +45,8 @@
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
-    "@tailwindcss/line-clamp": "^0.4.2",
-    "@tailwindcss/typography": "^0.5.8",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@tailwindcss/typography": "^0.5.9",
     "color": "^4.2.3"
   },
   "devDependencies": {

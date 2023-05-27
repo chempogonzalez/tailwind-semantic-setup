@@ -1,3 +1,4 @@
+// @ts-check
 const { withSemanticSetup } = require('tailwind-semantic-setup')
 
 
@@ -12,6 +13,12 @@ module.exports = withSemanticSetup({
     extend: {},
   },
   semanticSetup: {
+    plugins: {
+      'typography': true,
+      'forms': true,
+      'line-clamp': false,
+      'aspect-ratio': true,
+    },
     themes: [
       {
         name: 'test',
