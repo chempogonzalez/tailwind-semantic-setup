@@ -2,7 +2,7 @@
   "name": "tailwind-semantic-setup",
   "type": "module",
   "source": "index.js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "🧬 Smart multi-theme tool for better semantic Design Systems",
   "author": "Chempo González <chempo.glez@gmail.com> (https://github.com/chempogonzalez/)",
   "license": "ISC",
@@ -23,12 +23,12 @@
     "best practices"
   ],
   "exports": {
+    "types": "./types/index.d.ts",
     "require": "./dist/tailwind-semantic-setup.cjs",
-    "default": "./dist/tailwind-semantic-setup.modern.js"
+    "default": "./dist/tailwind-semantic-setup.module.js"
   },
   "main": "./dist/tailwind-semantic-setup.cjs",
   "module": "./dist/tailwind-semantic-setup.module.js",
-  "unpkg": "./dist/tailwind-semantic-setup.umd.js",
   "types": "./types/index.d.ts",
   "files": [
     "dist",
